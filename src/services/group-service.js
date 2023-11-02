@@ -33,8 +33,19 @@ async function getGroup(id){
         throw new AppError(`not able to get a group details , ${error?.message}`,error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR)
     }
 }
+async function deleteGroup(id){
+    try {
+        const group = await groupRepository.delete(id);
+        console.log('group details : ',group);
+        return group;
+    } catch (error) {
+        console.log('group service delete group error :',error);
+        throw new AppError(`not able to get a group details , ${error?.message}`,error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR)
+    }
+}
 
 module.exports = {
     createGroup,
     getGroup,
+    deleteGroup
 }

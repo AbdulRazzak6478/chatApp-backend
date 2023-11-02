@@ -17,7 +17,7 @@ const groupSchema = new mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId
         }
     ],
-    profileImg : {
+    profileImg:{
         type:String
     },
     messages : [
