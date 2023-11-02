@@ -8,6 +8,8 @@ router.get('/:id',GroupController.getGroup);
 
 router.delete('/:id',GroupController.deleteGroup);
 
+router.patch('/',GroupController.updateGroup);
+
 
 
 module.exports = router;

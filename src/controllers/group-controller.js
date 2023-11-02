@@ -37,8 +37,21 @@ async function deleteGroup(req, res){
         return res.status(error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
     }
 }
+async function updateGroup(req, res){
+    try {
+        console.log(' data : ',req.body);
+        const response = await GroupService.updateGroup(req.body);
+        SuccessResponse.data = response;
+        return res.status(StatusCodes.OK).json(SuccessResponse);
+    } catch (error) {
+        console.log('group controller deleteGroup error : ',error);
+        ErrorResponse.data = error;
+        return res.status(error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
+    }
+}
 module.exports = {
     createGroup,
     getGroup,
-    deleteGroup
+    deleteGroup,
+    updateGroup
 }

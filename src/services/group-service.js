@@ -44,8 +44,21 @@ async function deleteGroup(id){
     }
 }
 
+async function updateGroup(data){
+    try {
+        data.isPersonal = data.isPersonal == 1 ? true : false;
+        const group = await groupRepository.update(data.id,data);
+        console.log('group details : ',group);
+        return group;
+    } catch (error) {
+        console.log('group service delete group error :',error);
+        throw new AppError(`not able to get a group details , ${error?.message}`,error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR)
+    }
+}
+
 module.exports = {
     createGroup,
     getGroup,
-    deleteGroup
+    deleteGroup,
+    updateGroup
 }
