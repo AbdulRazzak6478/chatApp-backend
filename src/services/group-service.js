@@ -23,7 +23,18 @@ async function createGroup (data){
         throw new AppError(`not able to create a group , ${error?.message}`,error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR)
     }
 }
+async function getGroup(id){
+    try {
+        const group = await groupRepository.get(id);
+        console.log('group details : ',group);
+        return group;
+    } catch (error) {
+        console.log('group service get group error :',error);
+        throw new AppError(`not able to get a group details , ${error?.message}`,error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR)
+    }
+}
 
 module.exports = {
     createGroup,
+    getGroup,
 }
