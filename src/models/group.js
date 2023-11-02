@@ -7,6 +7,11 @@ const groupSchema = new mongoose.Schema({
     isPersonal : {
         type:Boolean,
     },
+    admins:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+        }
+    ],
     users :[
         {
             type:mongoose.Schema.Types.ObjectId
