@@ -11,7 +11,8 @@ router.get('/info',InfoController.info);
 router.post('/register',UserController.signup);
 
 router.post('/signin',UserController.signIn);
- 
+
+router.get('/users',UserController.getAllUsers)
 
 module.exports = router;
 

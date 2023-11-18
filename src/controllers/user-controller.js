@@ -33,7 +33,22 @@ async function signIn(req, res){
     }
 }
 
+async function getAllUsers(req,res){
+    try {
+        const data = req.body;
+        const response = await UserService.getAllUsers();
+
+        SuccessResponse.data = response;
+        return res.status(StatusCodes.OK).json(SuccessResponse);
+    } catch (error) {
+        console.log('user controller get all users error : ',error);
+        ErrorResponse.data = error;
+        return res.status(error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
+    }
+}
+
 module.exports = {
     signup,
-    signIn
+    signIn,
+    getAllUsers
 }
