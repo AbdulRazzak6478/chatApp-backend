@@ -1,4 +1,4 @@
-const { GroupService  } = require('../services');
+const { GroupService, ChatService  } = require('../services');
 const { StatusCodes } = require('http-status-codes');
 const { ErrorResponse, SuccessResponse } = require("../utils/common");
 
@@ -68,10 +68,25 @@ async function updateGroup(req, res){
         return res.status(error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
     }
 }
+
+async function chatMessage(req, res){
+    try {
+        console.log('message data : ',req.body);
+        const response = await ChatService.createChatMessage(req.params.id,req.body);
+        console.log('message response : ',response);
+        SuccessResponse.data = response;
+        return res.status(StatusCodes.OK).json(SuccessResponse);
+    } catch (error) {
+        console.log('group controller create message error : ',error);
+        ErrorResponse.data = error;
+        return res.status(error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
+    }
+}
 module.exports = {
     createGroup,
     getGroups,
     getGroup,
     deleteGroup,
-    updateGroup
+    updateGroup,
+    chatMessage
 }

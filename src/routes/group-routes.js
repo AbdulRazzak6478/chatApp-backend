@@ -8,6 +8,10 @@ router.get('/',GroupController.getGroups)
 
 router.get('/:id',GroupController.getGroup);
 
+
+router.post('/:id',GroupController.chatMessage);
+
+
 router.delete('/:id',GroupController.deleteGroup);
 
 router.patch('/',GroupController.updateGroup);
