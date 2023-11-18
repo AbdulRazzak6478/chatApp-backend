@@ -4,7 +4,15 @@ const { ErrorResponse, SuccessResponse } = require("../utils/common");
 
 async function createGroup(req, res){
     try {
-        const data = req.body;
+        let users = req.body.users.split(',');
+        console.log('users : ',users);
+        const data = {
+            name : req.body.name,
+            isPersonal : req.body.isPersonal,
+            admins : req.body.admin,
+            users : users,
+            // messages : req.body.messages
+        };
         console.log('data : ',data);
         const response = await GroupService.createGroup(data);
         SuccessResponse.data = response;
@@ -22,6 +30,17 @@ async function getGroup(req, res){
         return res.status(StatusCodes.OK).json(SuccessResponse);
     } catch (error) {
         console.log('group controller getGroup error : ',error);
+        ErrorResponse.data = error;
+        return res.status(error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
+    }
+}
+async function getGroups(req, res){
+    try {
+        const response = await GroupService.getGroups();
+        SuccessResponse.data = response;
+        return res.status(StatusCodes.OK).json(SuccessResponse);
+    } catch (error) {
+        console.log('group controller getGroups error : ',error);
         ErrorResponse.data = error;
         return res.status(error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
     }
@@ -51,6 +70,7 @@ async function updateGroup(req, res){
 }
 module.exports = {
     createGroup,
+    getGroups,
     getGroup,
     deleteGroup,
     updateGroup
