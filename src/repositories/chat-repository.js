@@ -6,10 +6,10 @@ class ChatRepository extends CrudRepository{
     {
         super(Chat);
     }
-    async getChatByGroupId(groupId)
+    async getChatByChatId(chatId)
     {
         const chats = await Chat.find({
-            groupId:groupId,
+            chatId:chatId,
         });
         return chats;
     }

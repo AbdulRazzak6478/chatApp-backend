@@ -8,7 +8,7 @@ async function DBconnect(){
         const result = await mongoose.connect(UR_INDENTIFIER)
         console.log('Mongo DB connected');
     } catch (error) {
-        console.log('error in connecting to database ,check the connection ...');
+        console.log('error in connecting to database ,Please check the connection ...');
     }
 }
 

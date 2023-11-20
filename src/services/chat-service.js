@@ -36,17 +36,17 @@ async function createChatMessage(groupId,data)
     }
 }
 
-// async function getAllGroupChats(groupId){
-//     try {
-//         console.log('group id : ',groupId);
-//         // const chats = await chatRepository.getChatByGroupId(groupId);
-//         const chats = await chatRepository.getAll();
-//         console.log('group chats : ',chats);
-//         return chats;
-//     } catch (error) {
-//         console.log('error in getting group chats , from chat service getAllGroupChats',error);
-//     }
-// }
+async function getAllGroupChats(chatId){
+    try {
+        console.log('chat id : ',chatId);
+        const chats = await chatRepository.getChatByChatId(chatId);
+        // const chats = await chatRepository.getAll();
+        console.log('group chats : ',chats);
+        return chats;
+    } catch (error) {
+        console.log('error in getting group chats , from chat service getAllGroupChats',error);
+    }
+}
 
 module.exports = {
     createChatMessage,

@@ -11,7 +11,7 @@ router.get('/:id',GroupController.getGroup);
 
 router.post('/:id/chats',GroupController.chatMessage);
 
-// router.get('/:id/chats',GroupController.getAllGroupChats);
+router.get('/:id/chats',GroupController.getAllGroupChats);
 
 
 router.delete('/:id',GroupController.deleteGroup);
