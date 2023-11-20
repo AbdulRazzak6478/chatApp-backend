@@ -9,7 +9,9 @@ router.get('/',GroupController.getGroups)
 router.get('/:id',GroupController.getGroup);
 
 
-router.post('/:id',GroupController.chatMessage);
+router.post('/:id/chats',GroupController.chatMessage);
+
+// router.get('/:id/chats',GroupController.getAllGroupChats);
 
 
 router.delete('/:id',GroupController.deleteGroup);

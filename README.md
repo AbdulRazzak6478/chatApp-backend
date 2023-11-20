@@ -19,5 +19,6 @@ Group
 
 Chat
 - content
+- groupId (in group chat  )
 - user_id
 - userName

@@ -9,7 +9,7 @@ const userRepository = new UserRepository();
 
 async function createGroup (data){
     try {
-        const user = await userRepository.get(data.admin);
+        const user = await userRepository.get(data.admins);
         data.isPersonal = data.isPersonal == 1 ? true : false;
         // data.admins = data.userId;
         // data.users = data.userId;

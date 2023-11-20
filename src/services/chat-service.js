@@ -10,10 +10,11 @@ async function createChatMessage(groupId,data)
 {
     try {
         console.log('groupId : ',groupId);
-        console.log('data : ',data);
+        console.log('data from request : ',data);
         const user = await userRepository.get(data.userId);
         console.log('user details ',user);
         data.userName = user.name;
+        data.chatId = groupId;
         console.log('message payload',data);
 
         const group = await groupRepository.get(groupId);
@@ -35,6 +36,19 @@ async function createChatMessage(groupId,data)
     }
 }
 
+// async function getAllGroupChats(groupId){
+//     try {
+//         console.log('group id : ',groupId);
+//         // const chats = await chatRepository.getChatByGroupId(groupId);
+//         const chats = await chatRepository.getAll();
+//         console.log('group chats : ',chats);
+//         return chats;
+//     } catch (error) {
+//         console.log('error in getting group chats , from chat service getAllGroupChats',error);
+//     }
+// }
+
 module.exports = {
-    createChatMessage
+    createChatMessage,
+    getAllGroupChats
 }

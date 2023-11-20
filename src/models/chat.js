@@ -9,6 +9,9 @@ const chatSchema = new mongoose.Schema({
   },
   userName : {
     type : String
+  },
+  chatId : {
+    type : String
   }
 });
 

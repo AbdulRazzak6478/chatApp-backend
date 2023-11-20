@@ -82,11 +82,26 @@ async function chatMessage(req, res){
         return res.status(error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
     }
 }
+
+// async function getAllGroupChats(req, res){
+//     try {
+//         console.log('message data : ',req.body);
+//         const response = await ChatService.getAllGroupChats(req.params.id);
+//         console.log('message response : ',response);
+//         SuccessResponse.data = response;
+//         return res.status(StatusCodes.OK).json(SuccessResponse);
+//     } catch (error) {
+//         console.log('group controller get group chats message error : ',error);
+//         ErrorResponse.data = error;
+//         return res.status(error?.statusCode ? error.statusCode :StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
+//     }
+// }
 module.exports = {
     createGroup,
     getGroups,
     getGroup,
     deleteGroup,
     updateGroup,
-    chatMessage
+    chatMessage,
+    // getAllGroupChats
 }
