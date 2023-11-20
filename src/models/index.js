@@ -2,5 +2,6 @@
 module.exports = {
     User : require('./user'),
     Group : require('./group'),
-    Chat : require('./chat')
+    Chat : require('./chat'),
+    PrivateChat : require('./privateChat')
 }

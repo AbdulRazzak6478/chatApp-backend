@@ -17,8 +17,14 @@ Group
 - profileImg
 - messages : [ chat_ids ]
 
+PrivateChat
+- users : [ user1_id, user2_id ]
+- messages :[ { message_id , userId }]
+- name : string 
+
+
 Chat
 - content
-- groupId (in group chat  )
+- chatId (either from group or personal chat )
 - user_id
 - userName
