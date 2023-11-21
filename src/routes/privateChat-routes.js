@@ -4,6 +4,8 @@ const router = express.Router();
 
 router.post('/',PrivateChatController.createPrivateChat);
 
+router.get('/',PrivateChatController.getPrivateChats);
+
 
 
 

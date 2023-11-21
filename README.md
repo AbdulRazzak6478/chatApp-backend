@@ -22,14 +22,13 @@ PrivateChat
 - messages :[ { message_id , userId }]
 - name : string 
 
-PrivateChat
-- users : [ [user1_id, user2_id] ]
-- messages :[ { message_id , userId }]
-- name : string 
-
-
 Chat
 - content
 - chatId (either from group or personal chat )
 - user_id
 - userName
+
+
+
+
+
